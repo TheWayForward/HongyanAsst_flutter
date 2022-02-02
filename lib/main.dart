@@ -97,8 +97,6 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
     });
   }
 
-  // test
-
   bool get hasLogin =>
       LoginDao.getBoardingPass() != null &&
       LoginDao.getBoardingPass().length != 0;
