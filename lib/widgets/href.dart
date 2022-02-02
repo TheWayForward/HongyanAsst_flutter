@@ -10,12 +10,15 @@ class Href extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTapLink,
-      child: Center(
-        child: RichText(
-          text: TextSpan(text: "", children: inlineSpanList),
-        ),
-      ),
-    );
+        onTap: onTapLink,
+        child: Container(
+          height: 30,
+          decoration: BoxDecoration(border: Border.all(color: Colors.white)),
+          child: Center(
+            child: RichText(
+              text: TextSpan(text: "", children: inlineSpanList),
+            ),
+          ),
+        ));
   }
 }

@@ -22,6 +22,10 @@ class VerificationHelper {
         .hasMatch(email);
   }
 
+  static bool telVerification(String tel) {
+    return RegExp(r"^[1][3,4,5,7,8][0-9]{9}$").hasMatch(tel);
+  }
+
   static bool URLVerification(String URL) {
     return RegExp(r"^((https|http|ftp|rtsp|mms)?:\/\/)[^\s]+").hasMatch(URL);
   }
