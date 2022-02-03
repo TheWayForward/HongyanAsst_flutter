@@ -7,25 +7,19 @@ import 'package:hongyanasst/http/request/registration_request.dart';
 class LoginDao {
   static const BOARDING_PASS = "boarding-pass";
 
-  static login(String userName, String password) {
-    return _send(userName, password);
+  static login(String username, String password, String type) {
+    return _send(username, password, type);
   }
 
-  static registration(
-      String userName, String password, String imoocId, String orderId) {
-    return _send(userName, password, imoocId: imoocId, orderId: orderId);
-  }
-
-  static _send(String userName, String password,
-      {String? imoocId, String? orderId}) async {
+  static _send(String username, String password, String type) async {
     BaseRequest request = LoginRequest();
-    request.add("username", userName);
+    request.add("username", username);
     request.add("password", password);
+    request.add("type", type);
     var result = await HiNet.getInstance().fire(request);
-    print(result);
-    if (result['code'] == 0 && result['data'] != null) {
+    if (result['code'] == 200 && result['token'] != null) {
       // login succeed, save boarding pass
-      HiCache.getInstance().setString(BOARDING_PASS, result['data']);
+      HiCache.getInstance().setString(BOARDING_PASS, result['token']);
     }
     return result;
   }

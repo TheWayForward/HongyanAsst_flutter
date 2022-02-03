@@ -1,4 +1,5 @@
 import 'package:hongyanasst/http/request/base_request.dart';
+import 'package:hongyanasst/utils/message_helper.dart';
 import 'dio_adapter.dart';
 import 'hi_error.dart';
 import 'hi_interceptor.dart';
@@ -39,6 +40,8 @@ class HiNet {
     switch (status) {
       case 200:
         return result;
+      case 204:
+        throw NoContent(MessageHelper.user_DNE_ch);
       case 401:
         throw NeedLogin();
       case 403:

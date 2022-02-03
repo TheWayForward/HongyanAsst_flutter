@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hongyanasst/navigator/bottom_navigator.dart';
 import 'package:hongyanasst/pages/login_page.dart';
 import 'package:hongyanasst/pages/registration_page.dart';
+import 'package:hongyanasst/pages/user_term_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 typedef RouteChangeListener(RouteStatusInfo current, RouteStatusInfo pre);
@@ -25,13 +26,15 @@ int getPageIndex(List<MaterialPage> pages, RouteStatus routeStatus) {
   return -1;
 }
 
-enum RouteStatus { login, registration, home, profile, unknown }
+enum RouteStatus { login, registration, user_term, retrieve_password, home, profile, unknown }
 
 RouteStatus getStatus(MaterialPage page) {
   if (page.child is LoginPage) {
     return RouteStatus.login;
   } else if (page.child is RegistrationPage) {
     return RouteStatus.registration;
+  } else if (page.child is UserTermPage) {
+    return RouteStatus.user_term;
   } else if (page.child is BottomNavigator) {
     return RouteStatus.home;
   } else {

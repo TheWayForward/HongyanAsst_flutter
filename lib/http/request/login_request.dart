@@ -1,25 +1,18 @@
 import 'package:hongyanasst/http/request/base_request.dart';
 
-class LoginRequest extends BaseRequest{
+class LoginRequest extends BaseRequest {
   @override
   HttpMethod httpMethod() {
-    return HttpMethod.GET;
-    // TODO: implement httpMethod
-    throw UnimplementedError();
+    return HttpMethod.POST;
   }
 
   @override
   bool needLogin() {
     return false;
-    // TODO: implement needLogin
-    throw UnimplementedError();
   }
 
   @override
   String path() {
-    return "/api/v1/test";
-    // TODO: implement path
-    throw UnimplementedError();
+    return "/api/v1/login";
   }
-
 }

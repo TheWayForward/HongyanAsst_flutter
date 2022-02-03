@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter/services.dart';
 import 'package:hongyanasst/http/core/hi_error.dart';
 import 'package:hongyanasst/pages/login_page.dart';
 import 'package:hongyanasst/pages/registration_page.dart';
+import 'package:hongyanasst/pages/retrieve_password_page.dart';
+import 'package:hongyanasst/pages/user_term_page.dart';
 import 'package:hongyanasst/provider/hi_provider.dart';
 import 'package:hongyanasst/provider/theme_provider.dart';
 import 'package:hongyanasst/utils/message_helper.dart';
@@ -41,8 +44,10 @@ class _MyAppState extends State<MyApp> {
         future: HiCache.preInit(),
         builder: (BuildContext context, AsyncSnapshot<HiCache> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const MaterialApp(
-                debugShowCheckedModeBanner: false, home: Splash());
+            return MaterialApp(
+                builder: EasyLoading.init(),
+                debugShowCheckedModeBanner: false,
+                home: Splash());
           } else if (snapshot.connectionState == ConnectionState.done) {
             widget = Router(routerDelegate: _routerDelegate);
           } else {
@@ -61,6 +66,7 @@ class _MyAppState extends State<MyApp> {
                 darkTheme: ThemeProvider().getTheme(isDarkMode: true),
                 themeMode: ThemeProvider().getThemeMode(),
                 home: widget,
+                builder: EasyLoading.init(),
                 title: "HongyanAsst",
               );
             }),
@@ -89,9 +95,7 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
     // network error interceptor
     HiNet.getInstance().setErrorInterceptor((error) {
       if (error is NeedLogin) {
-        //清空失效的登录令牌
         HiCache.getInstance().remove(LoginDao.BOARDING_PASS);
-        //拉起登录
         HiNavigator.getInstance().onJumpTo(RouteStatus.login);
       }
     });
@@ -102,9 +106,14 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
       LoginDao.getBoardingPass().length != 0;
 
   RouteStatus get routeStatus {
+    // cancel the note below and rerun the app when you need to force logout
     // LoginDao.deleteBoardingPass();
-    // interceptor
-    if (_routeStatus != RouteStatus.registration && !hasLogin) {
+
+    // interceptor, user can only login, read terms or retrieve password without login
+    if (_routeStatus != RouteStatus.registration &&
+        _routeStatus != RouteStatus.user_term &&
+        _routeStatus != RouteStatus.retrieve_password &&
+        !hasLogin) {
       // must login to proceed
       return _routeStatus = RouteStatus.login;
     } else {
@@ -118,9 +127,7 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
     List<MaterialPage> tempPages = pages;
     if (index != -1) {
       // current stack contains target page
-      if (index != -1) {
-        tempPages = tempPages.sublist(0, index);
-      }
+      tempPages = tempPages.sublist(0, index);
     }
     var page;
     if (routeStatus == RouteStatus.home) {
@@ -136,11 +143,26 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
       page = pageWrap(LoginPage(onJumpToRegistration: () {
         _routeStatus = RouteStatus.registration;
         notifyListeners();
+      }, onJumpToUserTerm: () {
+        _routeStatus = RouteStatus.user_term;
+        notifyListeners();
+      }, onJumpToRetrievePassword: () {
+        _routeStatus = RouteStatus.retrieve_password;
+        notifyListeners();
       }, onSuccess: () {
         _routeStatus = RouteStatus.home;
         notifyListeners();
       }));
+    } else if (routeStatus == RouteStatus.user_term) {
+      page = pageWrap(UserTermPage());
+      notifyListeners();
+    } else if (routeStatus == RouteStatus.retrieve_password) {
+      page = pageWrap(RetrievePasswordPage(onSuccess: () {
+        _routeStatus = RouteStatus.login;
+        notifyListeners();
+      }));
     }
+    print(page);
     tempPages = [...tempPages, page];
     // tempPages as current, pages as old
     HiNavigator.getInstance().notify(tempPages, pages);
@@ -148,6 +170,7 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
 
     print("Page router contains ${pages.length} page(s).");
 
+    // fix android back button problem
     return WillPopScope(
         child: Navigator(
           key: navigatorKey,

@@ -10,10 +10,16 @@ class VerificationHelper {
   }
 
   static bool usernameVerification(String username) {
-    return RegExp(r"^[0-9a-zA-Z_]{1,}$").hasMatch(username);
+    if (username.length < 4 || username.length > 16) {
+      return false;
+    }
+    return RegExp(r"^(?![0-9]+$)[0-9A-Za-z]{8,20}$").hasMatch(username);
   }
 
   static bool passwordVerification(String password) {
+    if (password.length < 8 || password.length > 20) {
+      return false;
+    }
     return RegExp(r"^[0-9a-zA-Z_]{1,}$").hasMatch(password);
   }
 

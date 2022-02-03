@@ -7,6 +7,12 @@ class HiNetError implements Exception {
   HiNetError(this.code, this.message, {this.data});
 }
 
+//
+class NoContent extends HiNetError {
+  NoContent(String message, {int code = 204, dynamic data})
+    : super(code, message, data: data);
+}
+
 // Authorization Exception
 class NeedAuth extends HiNetError {
   NeedAuth(String message, {int code = 403, dynamic data})
