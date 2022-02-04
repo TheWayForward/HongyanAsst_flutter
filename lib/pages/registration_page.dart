@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hongyanasst/dao/login_dao.dart';
 import 'package:hongyanasst/dao/phone_captcha_dao.dart';
+import 'package:hongyanasst/dao/register_dao.dart';
+import 'package:hongyanasst/http/core/hi_error.dart';
 import 'package:hongyanasst/navigator/hi_navigator.dart';
 import 'package:hongyanasst/utils/color_helper.dart';
 import 'package:hongyanasst/utils/message_helper.dart';
@@ -11,6 +14,7 @@ import 'package:hongyanasst/widgets/common_input.dart';
 import 'package:hongyanasst/widgets/copyright_text.dart';
 import 'package:hongyanasst/widgets/digit_captcha.dart';
 import 'package:hongyanasst/widgets/large_button.dart';
+import 'package:hongyanasst/widgets/loading_mask.dart';
 import 'package:hongyanasst/widgets/single_checkbox.dart';
 import 'package:hongyanasst/widgets/toast.dart';
 
@@ -31,6 +35,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   bool _repsswordEnable = false;
   bool _captchaEnable = false;
+  bool _canSend = false;
+  bool _initialSend = true;
 
   bool _confirm = false;
   bool _registerEnable = false;
@@ -133,15 +139,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   _captchaInput() {
     return DigitCaptcha(
-        countdown: 60,
-        enabled: _captchaEnable,
-        canSend: true,
-        maxLength: 6,
-        onChanged: (String text) {
-          _captcha = text;
-          print(_captcha);
-          _checkInput();
-        });
+      countdown: 60,
+      enabled: _captchaEnable,
+      maxLength: 6,
+      onChanged: (String text) {
+        _captcha = text;
+        print(_captcha);
+        _checkInput();
+      },
+      tel: _tel,
+    );
   }
 
   _emailInput() {
@@ -182,12 +189,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
     setState(() {
       _repsswordEnable = _password.length >= 8;
       _captchaEnable = VerificationHelper.telVerification(_tel);
-      if (_nickname != "" &&
-          _password != "" &&
-          _rePassword != "" &&
-          _tel != "" &&
-          _captcha != "" &&
-          _email != "" && _confirm) {
+      _canSend = VerificationHelper.telVerification(_tel);
+      if (_nickname.length >= 4 &&
+          _password.length >= 8 &&
+          _password.length >= 8 &&
+          _tel.length == 11 &&
+          _captcha.length == 6 &&
+          _email.length >= 3 &&
+          _confirm) {
         _registerEnable = true;
       }
     });
@@ -224,6 +233,40 @@ class _RegistrationPageState extends State<RegistrationPage> {
       ShowToast.showToast(error);
       return;
     }
-    ShowToast.showToast("register");
+    // can register now
+    LoadingMask.showLoading(MessageHelper.loading_indication_ch);
+    try {
+      var result = await PhoneCaptchaDao.verify(_tel, _captcha);
+      try {
+        var result =
+            await RegisterDao.register(_nickname, _email, _tel, _password);
+        LoadingMask.dismiss();
+        ShowToast.showToast(MessageHelper.register_succeed);
+        try {
+          var result = await LoginDao.login(_tel, _password, "tel");
+          HiNavigator.getInstance().onJumpTo(RouteStatus.home, args: {});
+        } on HiNetError catch (e) {
+          LoadingMask.showError(e.message);
+        }
+      } on NeedAuth catch (e) {
+        LoadingMask.dismiss();
+        LoadingMask.showInfo(e.message);
+      } on NoContent catch (e) {
+        LoadingMask.dismiss();
+        LoadingMask.showInfo(e.message);
+      } on HiNetError catch (e) {
+        LoadingMask.dismiss();
+        LoadingMask.showError(e.message);
+      }
+    } on NeedAuth catch (e) {
+      LoadingMask.dismiss();
+      LoadingMask.showInfo(e.message);
+    } on NoContent catch (e) {
+      LoadingMask.dismiss();
+      LoadingMask.showInfo(e.message);
+    } on HiNetError catch (e) {
+      LoadingMask.dismiss();
+      LoadingMask.showError(e.message);
+    }
   }
 }

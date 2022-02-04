@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hongyanasst/navigator/bottom_navigator.dart';
+import 'package:hongyanasst/pages/crop_image_page.dart';
 import 'package:hongyanasst/pages/login_page.dart';
 import 'package:hongyanasst/pages/registration_page.dart';
 import 'package:hongyanasst/pages/user_term_page.dart';
@@ -26,7 +27,16 @@ int getPageIndex(List<MaterialPage> pages, RouteStatus routeStatus) {
   return -1;
 }
 
-enum RouteStatus { login, registration, user_term, retrieve_password, home, profile, unknown }
+enum RouteStatus {
+  login,
+  registration,
+  user_term,
+  retrieve_password,
+  crop_image,
+  home,
+  profile,
+  unknown
+}
 
 RouteStatus getStatus(MaterialPage page) {
   if (page.child is LoginPage) {
@@ -37,6 +47,8 @@ RouteStatus getStatus(MaterialPage page) {
     return RouteStatus.user_term;
   } else if (page.child is BottomNavigator) {
     return RouteStatus.home;
+  } else if (page.child is CropImagePage) {
+    return RouteStatus.crop_image;
   } else {
     return RouteStatus.unknown;
   }

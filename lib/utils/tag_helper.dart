@@ -16,7 +16,12 @@ class TagHelper {
   static const String username_register_helper_text_ch = "4-16位字母、数字";
   static const String username_helper_text_ch = "手机/email/账号";
   static const String username_indicator_ch = "请输入用户名";
-  
+
+  static const String change_avatar_ch = "更换头像";
+
+  static const String image_from_gallery = "从相册选择";
+  static const String image_from_camera = "拍照";
+
   static const String nickname_ch = "昵称";
   static const String nickname_helper_text_ch = "4-20位字母、数字";
 

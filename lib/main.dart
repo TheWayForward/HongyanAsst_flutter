@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter/services.dart';
 import 'package:hongyanasst/http/core/hi_error.dart';
+import 'package:hongyanasst/pages/crop_image_page.dart';
 import 'package:hongyanasst/pages/login_page.dart';
 import 'package:hongyanasst/pages/registration_page.dart';
 import 'package:hongyanasst/pages/retrieve_password_page.dart';
@@ -81,7 +84,10 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
   final GlobalKey<NavigatorState> navigatorKey;
   RouteStatus _routeStatus = RouteStatus.home;
   AppRoutePath? path;
+
   List<MaterialPage> pages = [];
+
+  File? tempImage;
 
   // set a key for navigator, get NavigatorState by navigatorKey.currentState
   AppRouteDelegate() : navigatorKey = GlobalKey<NavigatorState>() {
@@ -89,6 +95,11 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
         RouteJumpListener(onJumpTo: (RouteStatus routeStatus, {Map? args}) {
       _routeStatus = routeStatus;
       notifyListeners();
+      if (routeStatus == RouteStatus.crop_image) {
+        this.tempImage = args!["tempImage"];
+        notifyListeners();
+      }
+
       // if (routeStatus == ...) then ... notifyListeners(); (interceptor: message channel between pages)
     }));
 
@@ -134,6 +145,8 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
       // all page pop stack except of homepage
       pages.clear();
       page = pageWrap(BottomNavigator());
+    } else if (routeStatus == RouteStatus.crop_image) {
+      page = pageWrap(CropImagePage(image: tempImage!));
     } else if (routeStatus == RouteStatus.registration) {
       page = pageWrap(RegistrationPage());
     } else if (routeStatus == RouteStatus.login) {

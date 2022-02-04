@@ -7,6 +7,7 @@ import 'package:hongyanasst/http/core/hi_error.dart';
 import 'package:hongyanasst/utils/color_helper.dart';
 import 'package:hongyanasst/utils/message_helper.dart';
 import 'package:hongyanasst/utils/tag_helper.dart';
+import 'package:hongyanasst/utils/verification_helper.dart';
 import 'package:hongyanasst/widgets/common_input.dart';
 import 'package:hongyanasst/widgets/large_button.dart';
 import 'package:hongyanasst/widgets/loading_mask.dart';
@@ -15,16 +16,16 @@ import 'package:hongyanasst/widgets/toast.dart';
 class DigitCaptcha extends StatefulWidget {
   final int countdown;
   final bool enabled;
-  final bool canSend;
   final int maxLength;
+  final String tel;
   final ValueChanged<String> onChanged;
 
   const DigitCaptcha(
       {Key? key,
         required this.maxLength,
       required this.countdown,
-      required this.canSend,
         required this.onChanged,
+        required this.tel,
       this.enabled = false})
       : super(key: key);
 
@@ -37,7 +38,7 @@ class _DigitCaptchaState extends State<DigitCaptcha> {
   int _seconds = 60;
   double _fontSize = 16;
   String _content = TagHelper.send_ch;
-  bool _canSend = false;
+  bool _canSend = true;
 
   @override
   void initState() {
@@ -45,7 +46,7 @@ class _DigitCaptchaState extends State<DigitCaptcha> {
     setState(() {
       _seconds = widget.countdown;
       _content = TagHelper.send_ch;
-      _canSend = widget.canSend;
+      _canSend = _canSend;
     });
   }
 
@@ -87,10 +88,14 @@ class _DigitCaptchaState extends State<DigitCaptcha> {
   }
 
   _sendCaptcha() async {
+    if (!VerificationHelper.telVerification(widget.tel)) {
+      ShowToast.showToast(MessageHelper.tel_illegal_ch);
+      return;
+    }
     LoadingMask.showLoading(MessageHelper.loading_indication_ch);
     if (_canSend) {
       try {
-        var result = await PhoneCaptchaDao.get("18810559476");
+        var result = await PhoneCaptchaDao.get(widget.tel);
         print(result);
         LoadingMask.dismiss();
         ShowToast.showToast(MessageHelper.captcha_sent_ch);
@@ -125,5 +130,11 @@ class _DigitCaptchaState extends State<DigitCaptcha> {
 
   _cancelTimer() {
     _timer!.cancel();
+  }
+
+  @override
+  void dispose() {
+    _timer!.cancel();
+    super.dispose();
   }
 }

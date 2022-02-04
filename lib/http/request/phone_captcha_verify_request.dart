@@ -16,4 +16,8 @@ class VerifyPhoneCaptchaRequest extends BaseRequest {
     return "/api/v1/verify_phone_captcha";
   }
 
+  bool needUpload() {
+    return false;
+  }
+
 }

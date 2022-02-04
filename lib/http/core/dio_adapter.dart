@@ -14,8 +14,13 @@ class DioAdapter extends HiNetAdapter {
             options: options, queryParameters: request.params);
       } else if (request.httpMethod() == HttpMethod.POST) {
         print(request.params);
-        response = await Dio()
-            .post(request.url(), data: request.params, options: options);
+        if (request.needUpload()) {
+          response = await Dio()
+              .post(request.url(), data: request.formData, options: options);
+        } else {
+          response = await Dio()
+              .post(request.url(), data: request.params, options: options);
+        }
       } else if (request.httpMethod() == HttpMethod.DELETE) {
         response = await Dio()
             .delete(request.url(), data: request.params, options: options);

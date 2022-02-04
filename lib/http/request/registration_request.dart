@@ -22,4 +22,8 @@ class RegistrationRequest extends BaseRequest{
     throw UnimplementedError();
   }
 
+  bool needUpload() {
+    return false;
+  }
+
 }

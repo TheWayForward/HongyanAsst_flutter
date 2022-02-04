@@ -17,7 +17,7 @@ class ColorHelper {
     },
   );
 
-  static final MaterialColor primary = const MaterialColor(
+  static const MaterialColor primary = const MaterialColor(
     0xFFD24726,
     const <int, Color>{50: const Color(0x7FD24726)},
   );

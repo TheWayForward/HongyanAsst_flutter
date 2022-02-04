@@ -190,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
       HiNavigator.getInstance().onJumpTo(RouteStatus.home, args: {});
     } on NoContent catch (e) {
       LoadingMask.dismiss();
-      LoadingMask.showInfo(MessageHelper.user_DNE_ch);
+      LoadingMask.showInfo(e.message);
       print(e.toString());
     } on NeedAuth catch (e) {
       LoadingMask.dismiss();

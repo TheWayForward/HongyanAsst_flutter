@@ -4,9 +4,10 @@ import 'package:hongyanasst/utils/color_helper.dart';
 class LargeButton extends StatelessWidget {
   final String title;
   final bool enable;
+  final Color color;
   final VoidCallback? onPressed;
 
-  const LargeButton(this.title, {Key? key, this.enable = true, this.onPressed})
+  const LargeButton(this.title, {Key? key, this.enable = true, this.onPressed, this.color = ColorHelper.primary})
       : super(key: key);
 
   @override
@@ -18,7 +19,7 @@ class LargeButton extends StatelessWidget {
         height: 45,
         onPressed: enable ? onPressed : null,
         disabledColor: ColorHelper.primary[50],
-        color: ColorHelper.primary,
+        color: color,
         child: Text(title, style: TextStyle(color: Colors.white, fontSize: 16)),
       ),
     );

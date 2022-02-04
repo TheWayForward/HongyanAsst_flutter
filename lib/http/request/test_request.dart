@@ -16,4 +16,8 @@ class TestRequest extends BaseRequest {
     return "/api/v1/test";
   }
 
+  bool needUpload() {
+    return false;
+  }
+
 }

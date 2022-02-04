@@ -1,10 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:1:1-40:12
-INJECTED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:1:1-40:12
-INJECTED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:1:1-40:12
-INJECTED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:1:1-40:12
-MERGED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:1:1-40:12
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:1:1-51:12
+INJECTED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:1:1-51:12
+INJECTED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:1:1-51:12
+INJECTED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:1:1-51:12
+MERGED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:1:1-51:12
 MERGED from [:orientation] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\orientation\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:image_picker] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-19:12
 MERGED from [:amap_flutter_map] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\amap_flutter_map\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -12,6 +12,7 @@ MERGED from [:flutter_plugin_android_lifecycle] C:\Users\FuDongYuan\Desktop\Box\
 MERGED from [:sqflite] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:url_launcher_android] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [:path_provider_android] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:image_crop] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\image_crop\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-10:12
 MERGED from [:wakelock] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\wakelock\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:webview_flutter_android] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:shared_preferences_android] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -48,22 +49,66 @@ INJECTED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\andro
 		INJECTED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:1:1-40:12
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:1:1-51:12
 		INJECTED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:1:1-40:12
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:1:1-51:12
 		INJECTED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:1:11-69
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:3:5-67
-MERGED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:3:5-67
-MERGED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:3:5-67
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:4:5-67
+MERGED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:4:5-67
+MERGED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:4:5-67
 	android:name
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:3:22-64
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:4:22-64
+uses-permission#android.permission.CAMERA
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:5:5-64
+	android:name
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:5:22-62
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:6:5-81
+	android:name
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:6:22-78
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:7:5-75
+	android:name
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:7:22-72
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:8:5-79
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.14.1] C:\Users\FuDongYuan\.gradle\caches\transforms-2\files-2.1\ae7e24b3175291cd1958f55269920237\jetified-exoplayer-core-2.14.1\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.exoplayer:exoplayer-core:2.14.1] C:\Users\FuDongYuan\.gradle\caches\transforms-2\files-2.1\ae7e24b3175291cd1958f55269920237\jetified-exoplayer-core-2.14.1\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.exoplayer:exoplayer-common:2.14.1] C:\Users\FuDongYuan\.gradle\caches\transforms-2\files-2.1\694d764a55c8785e30f85a7f0e3ee2a7\jetified-exoplayer-common-2.14.1\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.exoplayer:exoplayer-common:2.14.1] C:\Users\FuDongYuan\.gradle\caches\transforms-2\files-2.1\694d764a55c8785e30f85a7f0e3ee2a7\jetified-exoplayer-common-2.14.1\AndroidManifest.xml:24:5-79
+	android:name
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:8:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:9:5-76
+	android:name
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:9:22-73
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:10:5-76
+	android:name
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:10:22-73
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:11:5-81
+MERGED from [:image_crop] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\image_crop\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-81
+MERGED from [:image_crop] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\image_crop\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:11:22-78
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:12:5-73
+	android:name
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:12:22-70
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:13:5-80
+MERGED from [:image_crop] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\image_crop\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-80
+MERGED from [:image_crop] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\image_crop\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:13:22-77
 application
-ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:4:5-39:19
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:15:5-50:19
 MERGED from [:image_picker] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
 MERGED from [:image_picker] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
 MERGED from [:url_launcher_android] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
@@ -75,51 +120,51 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Fu
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0] C:\Users\FuDongYuan\.gradle\caches\transforms-2\files-2.1\d67cd79abd1ca209502f51c69d23182b\core-1.1.0\AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:6:9-36
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:17:9-36
 	android:icon
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:5:9-43
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:16:9-43
 activity#com.trwyfowrd.hongyanasst.MainActivity
-ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:7:9-33:20
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:18:9-44:20
 	android:launchMode
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:11:13-43
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:22:13-43
 	android:hardwareAccelerated
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:10:13-47
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:21:13-47
 	android:windowSoftInputMode
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:13:13-55
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:24:13-55
 	android:configChanges
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:9:13-163
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:20:13-163
 	android:theme
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:12:13-47
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:23:13-47
 	android:name
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:8:13-41
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:19:13-41
 meta-data#io.flutter.embedding.android.NormalTheme
-ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:18:13-20:57
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:29:13-31:57
 	android:resource
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:20:17-54
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:31:17-54
 	android:name
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:19:17-72
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:30:17-72
 meta-data#io.flutter.embedding.android.SplashScreenDrawable
-ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:26:13-28:66
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:37:13-39:66
 	android:resource
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:28:17-63
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:39:17-63
 	android:name
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:27:17-81
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:38:17-81
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:29:13-32:29
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:40:13-43:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:30:17-69
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:41:17-69
 	android:name
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:30:25-66
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:41:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:31:17-77
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:42:17-77
 	android:name
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:31:27-74
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:42:27-74
 meta-data#flutterEmbedding
-ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:36:9-38:33
+ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:47:9-49:33
 	android:value
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:38:13-30
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:49:13-30
 	android:name
-		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:37:13-44
+		ADDED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml:48:13-44
 uses-sdk
 INJECTED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\android\app\src\main\AndroidManifest.xml
@@ -138,6 +183,8 @@ MERGED from [:url_launcher_android] C:\Users\FuDongYuan\Desktop\Box\learning\Hon
 MERGED from [:url_launcher_android] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_crop] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\image_crop\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_crop] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\image_crop\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:wakelock] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\wakelock\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:wakelock] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\wakelock\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:webview_flutter_android] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
@@ -224,9 +271,3 @@ ADDED from [:url_launcher_android] C:\Users\FuDongYuan\Desktop\Box\learning\Hong
 		ADDED from [:url_launcher_android] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
 	android:name
 		ADDED from [:url_launcher_android] C:\Users\FuDongYuan\Desktop\Box\learning\HongyanAsst_flutter\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [com.google.android.exoplayer:exoplayer-core:2.14.1] C:\Users\FuDongYuan\.gradle\caches\transforms-2\files-2.1\ae7e24b3175291cd1958f55269920237\jetified-exoplayer-core-2.14.1\AndroidManifest.xml:24:5-79
-MERGED from [com.google.android.exoplayer:exoplayer-common:2.14.1] C:\Users\FuDongYuan\.gradle\caches\transforms-2\files-2.1\694d764a55c8785e30f85a7f0e3ee2a7\jetified-exoplayer-common-2.14.1\AndroidManifest.xml:24:5-79
-MERGED from [com.google.android.exoplayer:exoplayer-common:2.14.1] C:\Users\FuDongYuan\.gradle\caches\transforms-2\files-2.1\694d764a55c8785e30f85a7f0e3ee2a7\jetified-exoplayer-common-2.14.1\AndroidManifest.xml:24:5-79
-	android:name
-		ADDED from [com.google.android.exoplayer:exoplayer-core:2.14.1] C:\Users\FuDongYuan\.gradle\caches\transforms-2\files-2.1\ae7e24b3175291cd1958f55269920237\jetified-exoplayer-core-2.14.1\AndroidManifest.xml:24:22-76

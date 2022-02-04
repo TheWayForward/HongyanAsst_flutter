@@ -32,7 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
       // confirm logout
       HiCache.getInstance().remove(LoginDao.BOARDING_PASS);
       HiNavigator.getInstance().onJumpTo(RouteStatus.login, args: {});
-      ShowToast.showToast(MessageHelper.logout_succeed);
+      ShowToast.showToast(MessageHelper.logout_succeed_ch);
     }
   }
 }

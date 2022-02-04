@@ -3,11 +3,16 @@ class MessageHelper {
 
   static const String request_unauth_ch = "未授权的请求";
 
+  static const String register_succeed = "注册成功，已为您自动登录";
+
   static const String login_indication_ch = "请先登录";
   static const String login_succeed_ch = "登录成功";
 
   static const String logout_ask_ch = "您真的要退出登录吗？";
-  static const String logout_succeed = "已退出登录";
+  static const String logout_succeed_ch = "已退出登录";
+
+  static const String upload_succeed_ch = "上传成功";
+  static const String upload_exception_ch = "上传成功";
 
   static const String captcha_sent_ch = "验证码已发送";
   static const String captcha_send_exception_ch = "验证码发送失败";

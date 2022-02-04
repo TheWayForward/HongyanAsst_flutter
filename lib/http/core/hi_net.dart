@@ -23,6 +23,9 @@ class HiNet {
     var error;
     try {
       response = await send(request);
+    } on NoContent catch(e) {
+      error = e;
+      response = e.data;
     } on HiNetError catch (e) {
       error = e;
       response = e.data;
@@ -31,17 +34,20 @@ class HiNet {
       error = e;
       printLog(e);
     }
+
     if (response == null) {
       printLog(error);
     }
     var result = response?.data;
-    printLog(result);
+    // printLog(result);
+
     var status = response?.statusCode;
     switch (status) {
       case 200:
+        if (result["code"] == 204) {
+          throw NoContent(result["message"] ,data: result);
+        }
         return result;
-      case 204:
-        throw NoContent(MessageHelper.user_DNE_ch);
       case 401:
         throw NeedLogin();
       case 403:

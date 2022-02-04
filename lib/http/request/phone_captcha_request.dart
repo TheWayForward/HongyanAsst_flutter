@@ -15,4 +15,8 @@ class PhoneCaptchaRequest extends BaseRequest {
   String path() {
     return "/api/v1/send_phone_captcha";
   }
+
+  bool needUpload() {
+    return false;
+  }
 }

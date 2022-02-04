@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:hongyanasst/dao/login_dao.dart';
 import 'package:hongyanasst/utils/config_helper.dart';
+import 'package:http/http.dart';
 
 enum HttpMethod { GET, POST, DELETE }
 
@@ -42,11 +44,21 @@ abstract class BaseRequest {
 
   bool needLogin();
 
-  Map<String, String> params = Map();
+  bool needUpload();
+
+  Map<String, dynamic> params = Map();
+
+  FormData? formData;
+
+  // set form data
+  BaseRequest setFormData(FormData _formData) {
+    formData = _formData;
+    return this;
+  }
 
   // add params
   BaseRequest add(String k, Object v) {
-    params[k] = v.toString();
+    params[k] = v;
     return this;
   }
 
@@ -57,6 +69,5 @@ abstract class BaseRequest {
     header[k] = v.toString();
     return this;
   }
-
 
 }

@@ -15,4 +15,9 @@ class LoginRequest extends BaseRequest {
   String path() {
     return "/api/v1/login";
   }
+
+  @override
+  bool needUpload() {
+    return false;
+  }
 }
