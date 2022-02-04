@@ -6,6 +6,7 @@ class CommonInput extends StatefulWidget {
   final List<TextInputFormatter> inputFormatters;
   final String hint;
   final String helperText;
+  final bool enabled;
   final int maxLength;
   final ValueChanged<String> onChanged;
   final ValueChanged<bool> focusChanged;
@@ -22,6 +23,7 @@ class CommonInput extends StatefulWidget {
       required this.helperText,
       required this.onChanged,
       required this.focusChanged,
+      this.enabled = true,
       this.maxLength = 20,
       this.lineStretch = false,
       this.obscureText = false,
@@ -61,8 +63,9 @@ class _CommonInputState extends State<CommonInput> {
 
   Widget _input() {
     return Padding(
-        padding: EdgeInsets.only(top: 10, bottom: 10),
+        padding: EdgeInsets.only(bottom: 10),
         child: TextField(
+          enabled: widget.enabled,
           inputFormatters: widget.inputFormatters,
           focusNode: _focusNode,
           onChanged: widget.onChanged,

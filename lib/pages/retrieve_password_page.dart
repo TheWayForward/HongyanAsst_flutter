@@ -3,9 +3,8 @@ import 'package:hongyanasst/utils/tag_helper.dart';
 import 'package:hongyanasst/widgets/common_app_bar.dart';
 
 class RetrievePasswordPage extends StatefulWidget {
-  final VoidCallback onSuccess;
 
-  const RetrievePasswordPage({Key? key, required this.onSuccess})
+  const RetrievePasswordPage({Key? key})
       : super(key: key);
 
   @override

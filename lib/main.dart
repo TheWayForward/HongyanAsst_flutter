@@ -135,32 +135,13 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
       pages.clear();
       page = pageWrap(BottomNavigator());
     } else if (routeStatus == RouteStatus.registration) {
-      page = pageWrap(RegistrationPage(onJumpToLogin: () {
-        _routeStatus = RouteStatus.login;
-        notifyListeners();
-      }));
+      page = pageWrap(RegistrationPage());
     } else if (routeStatus == RouteStatus.login) {
-      page = pageWrap(LoginPage(onJumpToRegistration: () {
-        _routeStatus = RouteStatus.registration;
-        notifyListeners();
-      }, onJumpToUserTerm: () {
-        _routeStatus = RouteStatus.user_term;
-        notifyListeners();
-      }, onJumpToRetrievePassword: () {
-        _routeStatus = RouteStatus.retrieve_password;
-        notifyListeners();
-      }, onSuccess: () {
-        _routeStatus = RouteStatus.home;
-        notifyListeners();
-      }));
+      page = pageWrap(LoginPage());
     } else if (routeStatus == RouteStatus.user_term) {
       page = pageWrap(UserTermPage());
-      notifyListeners();
     } else if (routeStatus == RouteStatus.retrieve_password) {
-      page = pageWrap(RetrievePasswordPage(onSuccess: () {
-        _routeStatus = RouteStatus.login;
-        notifyListeners();
-      }));
+      page = pageWrap(RetrievePasswordPage());
     }
     print(page);
     tempPages = [...tempPages, page];
@@ -201,10 +182,7 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
   }
 
   @override
-  Future<void> setNewRoutePath(AppRoutePath path) async {
-    print('AppRouterDelegate:setNewRoutePath: $path');
-    this.path = path;
-  }
+  Future<void> setNewRoutePath(AppRoutePath path) async {}
 }
 
 class AppRouteInformationParser extends RouteInformationParser<AppRoutePath> {

@@ -16,6 +16,13 @@ class VerificationHelper {
     return RegExp(r"^(?![0-9]+$)[0-9A-Za-z]{8,20}$").hasMatch(username);
   }
 
+  static bool nicknameVerification(String nickname) {
+    if (nickname.length < 4 || nickname.length > 20) {
+      return false;
+    }
+    return RegExp(r"^(?![0-9]+$)[0-9A-Za-z]{4,20}$").hasMatch(nickname);
+  }
+
   static bool passwordVerification(String password) {
     if (password.length < 8 || password.length > 20) {
       return false;

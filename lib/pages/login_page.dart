@@ -19,18 +19,7 @@ import 'package:hongyanasst/widgets/single_checkbox.dart';
 import 'package:hongyanasst/widgets/toast.dart';
 
 class LoginPage extends StatefulWidget {
-  final VoidCallback onJumpToRegistration;
-  final VoidCallback onJumpToUserTerm;
-  final VoidCallback onJumpToRetrievePassword;
-  final VoidCallback onSuccess;
-
-  const LoginPage(
-      {Key? key,
-      required this.onJumpToRegistration,
-      required this.onJumpToUserTerm,
-      required this.onJumpToRetrievePassword,
-      required this.onSuccess})
-      : super(key: key);
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -59,61 +48,82 @@ class _LoginPageState extends State<LoginPage> {
         child: Stack(children: [
           ListView(
             children: [
-              CommonInput(
-                  inputFormatters: [
-                    LengthLimitingTextInputFormatter(40),
-                    FilteringTextInputFormatter.deny(RegExp("[ ]"))
-                  ],
-                  hint: TagHelper.username_ch,
-                  helperText: TagHelper.username_helper_text_ch,
-                  obscureText: false,
-                  onChanged: (String text) {
-                    _username = text;
-                    _checkInput();
-                  },
-                  focusChanged: (bool focus) {},
-                  keyboardType: TextInputType.text),
-              CommonInput(
-                  inputFormatters: [
-                    LengthLimitingTextInputFormatter(20),
-                    FilteringTextInputFormatter.deny(RegExp("[ ]"))
-                  ],
-                  hint: TagHelper.password_ch,
-                  helperText: TagHelper.password_helper_text_ch,
-                  obscureText: true,
-                  onChanged: (String text) {
-                    _password = text;
-                    _checkInput();
-                  },
-                  focusChanged: (bool focus) {},
-                  keyboardType: TextInputType.text),
-              SingleCheckbox(
-                value: _confirm,
-                content: TagHelper.user_term_confirm_ch,
-                onTextTap: widget.onJumpToUserTerm,
-                onChanged: (bool? value) {
-                  setState(() {
-                    _confirm = value!;
-                  });
-                  _checkInput();
-                },
-              ),
-              LargeButton(TagHelper.login_ch, enable: true, onPressed: () {
+              _usernameInput(),
+              _passwordInput(),
+              _confirmCheckBox(),
+              LargeButton(TagHelper.login_ch, enable: _loginEnable,
+                  onPressed: () {
                 _login();
               }),
               SizedBox(height: 50),
-              Href(
-                  inlineSpanList: TagHelper.register_link_richtext,
-                  onTapLink: widget.onJumpToRegistration),
-              Href(
-                  inlineSpanList: TagHelper.forgot_password_link_richtext,
-                  onTapLink: widget.onJumpToRetrievePassword),
+              _registerLink(),
+              _retrievePasswordLink()
             ],
           ),
           Positioned(child: CopyRightText(), left: 0, right: 0, bottom: 0)
         ]),
       ),
     );
+  }
+
+  _usernameInput() {
+    return CommonInput(
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(40),
+          FilteringTextInputFormatter.deny(RegExp("[ ]"))
+        ],
+        hint: TagHelper.username_ch,
+        helperText: TagHelper.username_helper_text_ch,
+        obscureText: false,
+        onChanged: (String text) {
+          _username = text;
+          _checkInput();
+        },
+        focusChanged: (bool focus) {},
+        keyboardType: TextInputType.text);
+  }
+
+  _passwordInput() {
+    return CommonInput(
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(20),
+          FilteringTextInputFormatter.deny(RegExp("[ ]"))
+        ],
+        hint: TagHelper.password_ch,
+        helperText: TagHelper.password_helper_text_ch,
+        obscureText: true,
+        onChanged: (String text) {
+          _password = text;
+          _checkInput();
+        },
+        focusChanged: (bool focus) {},
+        keyboardType: TextInputType.text);
+  }
+
+  _confirmCheckBox() {
+    return SingleCheckbox(
+      value: _confirm,
+      content: TagHelper.user_term_confirm_ch,
+      onTextTap: _onJumpToUserTerm,
+      onChanged: (bool? value) {
+        setState(() {
+          _confirm = value!;
+        });
+        _checkInput();
+      },
+    );
+  }
+
+  _registerLink() {
+    return Href(
+        inlineSpanList: TagHelper.register_link_richtext,
+        onTapLink: _onJumpToRegistration);
+  }
+
+  _retrievePasswordLink() {
+    return Href(
+        inlineSpanList: TagHelper.forgot_password_link_richtext,
+        onTapLink: _onJumpToRetrievePassword);
   }
 
   _checkInput() {
@@ -130,6 +140,18 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
+  _onJumpToUserTerm() {
+    HiNavigator.getInstance().onJumpTo(RouteStatus.user_term, args: {});
+  }
+
+  _onJumpToRegistration() {
+    HiNavigator.getInstance().onJumpTo(RouteStatus.registration, args: {});
+  }
+
+  _onJumpToRetrievePassword() {
+    HiNavigator.getInstance().onJumpTo(RouteStatus.retrieve_password, args: {});
+  }
+
   _login() async {
     String error = "";
     String type = "";
@@ -137,41 +159,42 @@ class _LoginPageState extends State<LoginPage> {
     bool isEmail = VerificationHelper.emailVerification(_username);
     bool isTel = VerificationHelper.telVerification(_username);
 
-    // if (!isUsername && !isEmail && !isTel) {
-    //   error += MessageHelper.username_illegal_ch;
-    // }
-    //
-    // if (!VerificationHelper.passwordVerification(_password)) {
-    //   error += error == ""
-    //       ? MessageHelper.password_illegal_ch
-    //       : (MessageHelper.breaker + MessageHelper.password_illegal_ch);
-    // }
-    //
-    // if (error != "") {
-    //   ShowToast.showToast(error);
-    //   return;
-    // }
-    //
-    // if (isUsername) {
-    //   type = "username";
-    // } else if (isEmail) {
-    //   type = "email";
-    // } else {
-    //   type = "tel";
-    // }
+    if (!isUsername && !isEmail && !isTel) {
+      error += MessageHelper.username_illegal_ch;
+    }
+
+    if (!VerificationHelper.passwordVerification(_password)) {
+      error += error == ""
+          ? MessageHelper.password_illegal_ch
+          : (MessageHelper.crlf + MessageHelper.password_illegal_ch);
+    }
+
+    if (error != "") {
+      ShowToast.showToast(error);
+      return;
+    }
+
+    if (isUsername) {
+      type = "username";
+    } else if (isEmail) {
+      type = "email";
+    } else {
+      type = "tel";
+    }
 
     LoadingMask.showLoading(MessageHelper.loading_indication_ch);
     try {
-      var result = await LoginDao.login("username_1", "Sam_2019", "username");
-      print(result["token"]);
+      var result = await LoginDao.login(_username, _password, type);
       LoadingMask.dismiss();
       ShowToast.showToast(MessageHelper.login_succeed_ch);
       HiNavigator.getInstance().onJumpTo(RouteStatus.home, args: {});
     } on NoContent catch (e) {
       LoadingMask.dismiss();
-      LoadingMask.showError(MessageHelper.user_DNE_ch);
+      LoadingMask.showInfo(MessageHelper.user_DNE_ch);
       print(e.toString());
     } on NeedAuth catch (e) {
+      LoadingMask.dismiss();
+      LoadingMask.showInfo(MessageHelper.request_unauth_ch);
       print(e.toString());
     } on HiNetError catch (e) {
       LoadingMask.dismiss();
