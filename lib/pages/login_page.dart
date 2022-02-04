@@ -153,6 +153,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _login() async {
+
     String error = "";
     String type = "";
     bool isUsername = VerificationHelper.usernameVerification(_username);

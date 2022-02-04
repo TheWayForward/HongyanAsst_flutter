@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hongyanasst/pages/community_page.dart';
 import 'package:hongyanasst/pages/home_page.dart';
+import 'package:hongyanasst/pages/moment_page.dart';
 import 'package:hongyanasst/pages/profile_page.dart';
 import 'package:hongyanasst/utils/color_helper.dart';
 import 'package:hongyanasst/utils/tag_helper.dart';
@@ -25,7 +27,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
 
   @override
   Widget build(BuildContext context) {
-    _pages = [HomePage(), ProfilePage()];
+    _pages = [HomePage(), CommunityPage(), MomentPage(), ProfilePage()];
     if (!_hasBuild) {
       // initial build
       HiNavigator.getInstance()
@@ -38,7 +40,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
         physics: NeverScrollableScrollPhysics(),
         onPageChanged: (index) => _onJumpTo(index, pageChange: true),
         controller: _controller,
-        children: [HomePage(), ProfilePage()],
+        children: [HomePage(), CommunityPage(), MomentPage(), ProfilePage()],
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -46,8 +48,15 @@ class _BottomNavigatorState extends State<BottomNavigator> {
         onTap: (index) => _onJumpTo(index),
         selectedItemColor: _activeColor,
         items: [
-          _bottomItem(TagHelper.bottom_navigation_homepage_ch, Icons.home, 0),
-          _bottomItem(TagHelper.bottom_navigation_profilepage_ch, Icons.account_circle, 1)
+          _bottomItem(TagHelper.bottom_navigation_homepage_ch,
+              _currentIndex == 0 ? Icons.home : Icons.home_outlined, 0),
+          _bottomItem(
+              TagHelper.bottom_navigation_community_ch,
+              _currentIndex == 1 ? Icons.people_alt : Icons.people_alt_outlined,
+              1),
+          _bottomItem(TagHelper.bottom_navigation_moment_ch, _currentIndex == 2 ? Icons.chat : Icons.chat_outlined, 2),
+          _bottomItem(TagHelper.bottom_navigation_profilepage_ch,
+              _currentIndex == 3 ? Icons.account_circle : Icons.account_circle_outlined, 3)
         ],
       ),
     );

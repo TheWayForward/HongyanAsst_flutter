@@ -3,6 +3,7 @@ import 'package:hongyanasst/dao/login_dao.dart';
 import 'package:hongyanasst/dao/phone_captcha_dao.dart';
 import 'package:hongyanasst/dao/test_dao.dart';
 import 'package:hongyanasst/http/core/hi_error.dart';
+import 'package:hongyanasst/utils/color_helper.dart';
 import 'package:hongyanasst/widgets/image_crop_pick.dart';
 import 'package:hongyanasst/widgets/toast.dart';
 
@@ -14,8 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-
   @override
   void initState() {
     // TODO: implement initState
@@ -25,8 +24,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ImageCropPick()
+      child: ElevatedButton(
+        onPressed: _test,
+        child: Text("get homepage data"),
+      ),
     );
   }
 
+  _test() async {
+    var result = await TestDao.get();
+    print(result);
+  }
 }

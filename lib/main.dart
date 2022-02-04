@@ -121,6 +121,10 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
     // LoginDao.deleteBoardingPass();
 
     // interceptor, user can only login, read terms or retrieve password without login
+
+    // mock login
+    // return _routeStatus;
+
     if (_routeStatus != RouteStatus.registration &&
         _routeStatus != RouteStatus.user_term &&
         _routeStatus != RouteStatus.retrieve_password &&

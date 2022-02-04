@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:hongyanasst/utils/color_helper.dart';
 
 class TagHelper {
-  static const String bottom_navigation_homepage_ch = "首页";
+  static const String bottom_navigation_homepage_ch = "主页";
+  static const String bottom_navigation_community_ch = "社区";
+  static const String bottom_navigation_moment_ch = "动态";
   static const String bottom_navigation_profilepage_ch = "我的";
 
   static const String confirm_ch = "确定";

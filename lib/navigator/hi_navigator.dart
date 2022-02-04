@@ -34,6 +34,8 @@ enum RouteStatus {
   retrieve_password,
   crop_image,
   home,
+  community,
+  moment,
   profile,
   unknown
 }

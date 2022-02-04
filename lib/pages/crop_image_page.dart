@@ -31,17 +31,16 @@ class _CropImagePageState extends State<CropImagePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
         body: Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.all(10),
-      color: Colors.white,
-      child: Column(
+      color: Colors.black,
+      child: Stack(
         children: <Widget>[
-          SizedBox(height: 20),
           Container(
-            height: MediaQuery.of(context).size.height * 0.85,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
             child: Crop.file(
               widget.image,
               key: cropKey,
@@ -50,16 +49,22 @@ class _CropImagePageState extends State<CropImagePage> {
               alwaysShowGrid: true,
             ),
           ),
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            SizedBox(width: 4.5),
-            Expanded(
-                child: LargeButton(TagHelper.cancel_ch,
-                    color: Colors.grey, onPressed: _back)),
-            SizedBox(width: 10),
-            Expanded(
-                child: LargeButton(TagHelper.confirm_ch, onPressed: _crop)),
-            SizedBox(width: 4.5),
-          ])
+          Positioned(
+            bottom: 20,
+              left: 0,
+              right: 0,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                SizedBox(width: 10),
+                Expanded(
+                    child: LargeButton(TagHelper.cancel_ch,
+                        color: Colors.grey, onPressed: _back)),
+                SizedBox(width: 10),
+                Expanded(
+                    child: LargeButton(TagHelper.confirm_ch, onPressed: _crop)),
+                SizedBox(width: 10),
+              ]))
         ],
       ),
     ));

@@ -3,7 +3,7 @@ import 'package:hongyanasst/http/request/base_request.dart';
 class TestRequest extends BaseRequest {
   @override
   HttpMethod httpMethod() {
-    return HttpMethod.GET;
+    return HttpMethod.POST;
   }
 
   @override
@@ -13,7 +13,7 @@ class TestRequest extends BaseRequest {
 
   @override
   String path() {
-    return "/api/v1/test";
+    return "/api/v1/get_homepage_data";
   }
 
   bool needUpload() {
