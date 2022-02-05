@@ -31,43 +31,48 @@ class _CropImagePageState extends State<CropImagePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+        backgroundColor: Colors.black,
         body: Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      color: Colors.black,
-      child: Stack(
-        children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            child: Crop.file(
-              widget.image,
-              key: cropKey,
-              // square aspect ratio
-              aspectRatio: 1.0,
-              alwaysShowGrid: true,
-            ),
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          color: Colors.black,
+          child: Stack(
+            children: <Widget>[
+              Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: Crop.file(
+                  widget.image,
+                  key: cropKey,
+                  // square aspect ratio
+                  aspectRatio: 1.0,
+                  alwaysShowGrid: true,
+                ),
+              ),
+              Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    padding: EdgeInsets.all(0),
+                    height: 80,
+                    decoration: BoxDecoration(color: Colors.white),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                        SizedBox(width: 10),
+                        Expanded(
+                            child: LargeButton(TagHelper.cancel_ch,
+                                color: Colors.grey, onPressed: _back)),
+                        SizedBox(width: 10),
+                        Expanded(
+                            child: LargeButton(TagHelper.confirm_ch,
+                                onPressed: _crop)),
+                        SizedBox(width: 10),
+                      ])))
+            ],
           ),
-          Positioned(
-            bottom: 20,
-              left: 0,
-              right: 0,
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                SizedBox(width: 10),
-                Expanded(
-                    child: LargeButton(TagHelper.cancel_ch,
-                        color: Colors.grey, onPressed: _back)),
-                SizedBox(width: 10),
-                Expanded(
-                    child: LargeButton(TagHelper.confirm_ch, onPressed: _crop)),
-                SizedBox(width: 10),
-              ]))
-        ],
-      ),
-    ));
+        ));
   }
 
   _back() {

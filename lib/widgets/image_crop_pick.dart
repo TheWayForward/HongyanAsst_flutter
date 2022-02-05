@@ -4,49 +4,26 @@ import 'dart:io';
 import 'package:hongyanasst/utils/color_helper.dart';
 import 'package:hongyanasst/utils/tag_helper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'hi_bottom_sheet.dart';
 
 // only for single image
-pickImage(BuildContext context) {
-  showModalBottomSheet(
-      context: context,
-      clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(15), topRight: Radius.circular(15))),
-      builder: (context) => Container(
-        height: 220,
-        child: ListView(
-          children: <Widget>[
-            _title(),
-            Divider(),
-            _item(TagHelper.image_from_camera, true, context),
-            Divider(),
-            _item(TagHelper.image_from_gallery, false, context),
-          ],
-        ),
-      ));
-
+imageCropPick(BuildContext context) {
+  HiBottomSheet.showOption(context,
+      data: [TagHelper.image_from_camera, TagHelper.image_from_gallery],
+      title: TagHelper.change_avatar_ch,
+      onTap: (int index, String data) {
+        switch(index) {
+          case 0:
+            _getImage(true, context);
+            break;
+          case 1:
+            _getImage(false, context);
+            break;
+        }
+      });
 }
 
-_title() {
-  return ListTile(
-    leading: Icon(Icons.settings_applications),
-      title: Text(TagHelper.change_avatar_ch,
-          style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 18)));
-}
-
-_item(String title, bool isTakePhoto, BuildContext context) {
-  return GestureDetector(
-    child: ListTile(
-      leading: Icon(isTakePhoto ? Icons.camera_alt : Icons.photo_library),
-      title: Text(title),
-      onTap: () => getImage(isTakePhoto, context),
-    ),
-  );
-}
-
-Future getImage(bool isTakePhoto, BuildContext context) async {
+Future _getImage(bool isTakePhoto, BuildContext context) async {
   Navigator.pop(context);
   var image = await ImagePicker()
       .pickImage(

@@ -4,6 +4,7 @@ import 'package:hongyanasst/dao/phone_captcha_dao.dart';
 import 'package:hongyanasst/dao/test_dao.dart';
 import 'package:hongyanasst/http/core/hi_error.dart';
 import 'package:hongyanasst/utils/color_helper.dart';
+import 'package:hongyanasst/widgets/hi_bottom_sheet.dart';
 import 'package:hongyanasst/widgets/image_crop_pick.dart';
 import 'package:hongyanasst/widgets/toast.dart';
 
@@ -25,10 +26,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Center(
       child: ElevatedButton(
-        onPressed: _test,
+        onPressed: _crop,
         child: Text("get homepage data"),
       ),
     );
+  }
+
+  _crop() {
+    imageCropPick(context);
   }
 
   _test() async {
