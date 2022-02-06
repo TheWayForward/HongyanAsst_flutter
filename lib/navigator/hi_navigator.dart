@@ -37,6 +37,7 @@ enum RouteStatus {
   community,
   moment,
   profile,
+  profile_edit,
   unknown
 }
 

@@ -134,7 +134,7 @@ class _DigitCaptchaState extends State<DigitCaptcha> {
 
   @override
   void dispose() {
-    _timer!.cancel();
+    if (_timer != null) _timer!.cancel();
     super.dispose();
   }
 }

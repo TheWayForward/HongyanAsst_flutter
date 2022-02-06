@@ -7,11 +7,11 @@ enum HttpMethod { GET, POST, DELETE }
 
 abstract class BaseRequest {
   var pathParams;
-  var useHttps = false;
+  var useHttps = ConfigHelper.useHttps;
 
   String authority() {
     // IP of localhost under android
-    return "10.0.2.2:8000";
+    return ConfigHelper.authority;
     // return "127.0.0.1:8000";
   }
 

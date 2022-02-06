@@ -26,14 +26,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Center(
       child: ElevatedButton(
-        onPressed: _crop,
+        onPressed: _test,
         child: Text("get homepage data"),
       ),
     );
-  }
-
-  _crop() {
-    imageCropPick(context);
   }
 
   _test() async {

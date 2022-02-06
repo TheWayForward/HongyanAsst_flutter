@@ -59,7 +59,7 @@ class ThemeProvider extends ChangeNotifier {
         errorColor: isDarkMode ? ColorHelper.dark_red : ColorHelper.red,
         primaryColor: isDarkMode ? ColorHelper.dark_bg : ColorHelper.white,
         accentColor: isDarkMode ? ColorHelper.primary : ColorHelper.white,
-        indicatorColor: isDarkMode ? ColorHelper.primary : ColorHelper.white,
+        indicatorColor: isDarkMode ? ColorHelper.primary : ColorHelper.primary,
         scaffoldBackgroundColor:
             isDarkMode ? ColorHelper.dark_bg : ColorHelper.white);
     return themeData;

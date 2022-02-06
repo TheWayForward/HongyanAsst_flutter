@@ -5,8 +5,10 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter/services.dart';
 import 'package:hongyanasst/http/core/hi_error.dart';
+import 'package:hongyanasst/models/user_model.dart';
 import 'package:hongyanasst/pages/crop_image_page.dart';
 import 'package:hongyanasst/pages/login_page.dart';
+import 'package:hongyanasst/pages/profile_edit_page.dart';
 import 'package:hongyanasst/pages/registration_page.dart';
 import 'package:hongyanasst/pages/retrieve_password_page.dart';
 import 'package:hongyanasst/pages/user_term_page.dart';
@@ -88,6 +90,7 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
   List<MaterialPage> pages = [];
 
   File? tempImage;
+  UserModel? userModel;
 
   // set a key for navigator, get NavigatorState by navigatorKey.currentState
   AppRouteDelegate() : navigatorKey = GlobalKey<NavigatorState>() {
@@ -97,6 +100,10 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
       notifyListeners();
       if (routeStatus == RouteStatus.crop_image) {
         this.tempImage = args!["tempImage"];
+        notifyListeners();
+      }
+      if (_routeStatus == RouteStatus.profile_edit) {
+        this.userModel = args!["userModel"];
         notifyListeners();
       }
 
@@ -149,6 +156,9 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
       // all page pop stack except of homepage
       pages.clear();
       page = pageWrap(BottomNavigator());
+    } else if (routeStatus == RouteStatus.profile_edit) {
+      print("edit");
+      page = pageWrap(ProfileEditPage(userModel: userModel!));
     } else if (routeStatus == RouteStatus.crop_image) {
       page = pageWrap(CropImagePage(image: tempImage!));
     } else if (routeStatus == RouteStatus.registration) {

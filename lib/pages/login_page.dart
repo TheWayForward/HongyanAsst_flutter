@@ -4,6 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:hongyanasst/dao/login_dao.dart';
 import 'package:hongyanasst/db/hi_cache.dart';
 import 'package:hongyanasst/http/core/hi_error.dart';
+import 'package:hongyanasst/models/user_model.dart';
 import 'package:hongyanasst/navigator/hi_navigator.dart';
 import 'package:hongyanasst/utils/color_helper.dart';
 import 'package:hongyanasst/utils/message_helper.dart';
