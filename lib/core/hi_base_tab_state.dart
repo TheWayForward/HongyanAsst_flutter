@@ -85,11 +85,11 @@ abstract class HiBaseTabState<M, L, T extends StatefulWidget> extends HiState<T>
     } on NeedAuth catch (e) {
       loading = false;
       print(e);
-      ShowToast.showWarnToast(e.message);
+      ShowToast.showToast(e.message, context);
     } on HiNetError catch (e) {
       loading = false;
       print(e);
-      ShowToast.showWarnToast(e.message);
+      ShowToast.showToast(e.message, context);
     }
   }
 

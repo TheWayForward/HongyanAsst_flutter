@@ -25,6 +25,8 @@ class MessageHelper {
 
   static const String username_illegal_ch = "手机/email/账号格式错误";
 
+  static const String text_clear_ask = "确认清空此项内容？";
+
   static const String nickname_illegal_ch = "昵称格式错误";
 
   static const String password_illegal_ch = "密码格式错误";

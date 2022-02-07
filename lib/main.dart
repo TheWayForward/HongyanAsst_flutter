@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -15,6 +16,7 @@ import 'package:hongyanasst/pages/user_term_page.dart';
 import 'package:hongyanasst/provider/hi_provider.dart';
 import 'package:hongyanasst/provider/theme_provider.dart';
 import 'package:hongyanasst/utils/message_helper.dart';
+import 'package:hongyanasst/widgets/loading_mask.dart';
 import 'package:hongyanasst/widgets/splash_screen.dart';
 import 'package:hongyanasst/widgets/toast.dart';
 import 'package:provider/provider.dart';
@@ -72,6 +74,7 @@ class _MyAppState extends State<MyApp> {
                 themeMode: ThemeProvider().getThemeMode(),
                 home: widget,
                 builder: EasyLoading.init(),
+                navigatorObservers: [BotToastNavigatorObserver()],
                 title: "HongyanAsst",
               );
             }),
@@ -188,7 +191,7 @@ class AppRouteDelegate extends RouterDelegate<AppRoutePath>
               // login page interceptor
               if ((route.settings as MaterialPage).child is LoginPage) {
                 if (!hasLogin) {
-                  ShowToast.showWarnToast(MessageHelper.login_indication_ch);
+                  LoadingMask.showInfo(MessageHelper.login_indication_ch);
                   return false;
                 }
               }

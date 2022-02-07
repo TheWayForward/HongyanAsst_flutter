@@ -37,6 +37,8 @@ dependencies:
   amap_flutter_map: ^3.0.0
   fluttertoast: ^8.0.8
   flutter_easyloading: ^3.0.3
+  bot_toast: ^4.0.1
+  city_pickers: ^1.0.1
 
 dev_dependencies:
   flutter_test:

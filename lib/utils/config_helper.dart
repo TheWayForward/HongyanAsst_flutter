@@ -28,4 +28,7 @@ class ConfigHelper {
     header[LoginDao.BOARDING_PASS] = LoginDao.getBoardingPass();
     return header;
   }
+
+  static int user_detail_max_length = 200;
+  static int bicycle_detail_max_length = 500;
 }

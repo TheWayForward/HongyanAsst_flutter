@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hongyanasst/dao/login_dao.dart';
-import 'package:hongyanasst/dao/phone_captcha_dao.dart';
+import 'package:hongyanasst/dao/captcha_dao.dart';
 import 'package:hongyanasst/dao/register_dao.dart';
 import 'package:hongyanasst/http/core/hi_error.dart';
 import 'package:hongyanasst/navigator/hi_navigator.dart';
@@ -35,7 +35,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   bool _repsswordEnable = false;
   bool _captchaEnable = false;
-  bool _canSend = false;
   bool _initialSend = true;
 
   bool _confirm = false;
@@ -52,13 +51,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
           child: ListView(
             children: [
               SizedBox(height: 20),
-              _nicknameInput(),
-              _passwordInput(),
-              _rePasswordInput(),
-              _telInput(),
-              _captchaInput(),
-              _emailInput(),
-              _confirmCheckBox(),
+              _buildNicknameInput(),
+              _buildPasswordInput(),
+              _buildRePasswordInput(),
+              _buildTelInput(),
+              _buildCaptchaInput(),
+              _buildEmailInput(),
+              _buildConfirmCheckBox(),
               LargeButton(TagHelper.register_ch,
                   enable: _registerEnable, onPressed: _register),
               SizedBox(height: 50),
@@ -69,7 +68,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     );
   }
 
-  _nicknameInput() {
+  _buildNicknameInput() {
     return CommonInput(
         inputFormatters: [
           LengthLimitingTextInputFormatter(20),
@@ -86,7 +85,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
         keyboardType: TextInputType.text);
   }
 
-  _passwordInput() {
+  _buildPasswordInput() {
     return CommonInput(
         inputFormatters: [
           LengthLimitingTextInputFormatter(20),
@@ -103,7 +102,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
         keyboardType: TextInputType.text);
   }
 
-  _rePasswordInput() {
+  _buildRePasswordInput() {
     return CommonInput(
         enabled: _repsswordEnable,
         inputFormatters: [
@@ -121,7 +120,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
         keyboardType: TextInputType.text);
   }
 
-  _telInput() {
+  _buildTelInput() {
     return CommonInput(
         inputFormatters: [
           LengthLimitingTextInputFormatter(11),
@@ -137,21 +136,21 @@ class _RegistrationPageState extends State<RegistrationPage> {
         keyboardType: TextInputType.number);
   }
 
-  _captchaInput() {
+  _buildCaptchaInput() {
     return DigitCaptcha(
       countdown: 60,
+      captchaType: CaptchaType.phone,
       enabled: _captchaEnable,
       maxLength: 6,
       onChanged: (String text) {
         _captcha = text;
-        print(_captcha);
         _checkInput();
       },
-      tel: _tel,
+      inputContent: _tel,
     );
   }
 
-  _emailInput() {
+  _buildEmailInput() {
     return CommonInput(
         inputFormatters: [
           LengthLimitingTextInputFormatter(40),
@@ -167,7 +166,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
         keyboardType: TextInputType.emailAddress);
   }
 
-  _confirmCheckBox() {
+  _buildConfirmCheckBox() {
     return SingleCheckbox(
       value: _confirm,
       content: TagHelper.user_term_confirm_ch,
@@ -189,7 +188,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
     setState(() {
       _repsswordEnable = _password.length >= 8;
       _captchaEnable = VerificationHelper.telVerification(_tel);
-      _canSend = VerificationHelper.telVerification(_tel);
       if (_nickname.length >= 4 &&
           _password.length >= 8 &&
           _password.length >= 8 &&
@@ -230,18 +228,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
           : (MessageHelper.crlf + MessageHelper.email_illegal_ch);
     }
     if (error != "") {
-      ShowToast.showToast(error);
+      LoadingMask.showInfo(error);
       return;
     }
     // can register now
     LoadingMask.showLoading(MessageHelper.loading_indication_ch);
     try {
-      var result = await PhoneCaptchaDao.verify(_tel, _captcha);
+      var result = await CaptchaDao.verifyCaptcha(_captcha, CaptchaType.phone, tel: _tel);
       try {
         var result =
             await RegisterDao.register(_nickname, _email, _tel, _password);
         LoadingMask.dismiss();
-        ShowToast.showToast(MessageHelper.register_succeed);
+        LoadingMask.showSuccess(MessageHelper.register_succeed);
         try {
           var result = await LoginDao.login(_tel, _password, "tel");
           HiNavigator.getInstance().onJumpTo(RouteStatus.home, args: {});

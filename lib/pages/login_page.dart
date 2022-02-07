@@ -172,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     if (error != "") {
-      ShowToast.showToast(error);
+      LoadingMask.showInfo(error);
       return;
     }
 
@@ -188,7 +188,7 @@ class _LoginPageState extends State<LoginPage> {
     try {
       var result = await LoginDao.login(_username, _password, type);
       LoadingMask.dismiss();
-      ShowToast.showToast(MessageHelper.login_succeed_ch);
+      LoadingMask.showSuccess(MessageHelper.login_succeed_ch);
       HiNavigator.getInstance().onJumpTo(RouteStatus.home, args: {});
     } on NoContent catch (e) {
       LoadingMask.dismiss();

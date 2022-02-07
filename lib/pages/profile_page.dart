@@ -107,7 +107,7 @@ class _ProfilePageState extends State<ProfilePage>
   _buildHideStuff() {
     return Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        AvatarContainer(avatar: _userModel!.avatar),
+        AvatarContainer(avatar: _userModel!.avatar, isTitle: true),
         SizedBox(width: 20),
         Container(
           height: 80,
@@ -130,6 +130,10 @@ class _ProfilePageState extends State<ProfilePage>
     return;
   }
 
+  _buildContentList() {
+    return [_buildProfileTab(), Divider(), ..._buildOptions()];
+  }
+
   _buildProfileTab() {
     return Container(
       padding: EdgeInsets.only(top: 5, bottom: 5),
@@ -137,8 +141,8 @@ class _ProfilePageState extends State<ProfilePage>
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildTitleText(
-              TagHelper.team_ch, _userModel!.credit, _onJumpToUserTeam),
+          _buildTitleText(TagHelper.bottom_navigation_community_ch,
+              _userModel!.credit, _onJumpToUserTeam),
           SizedBox(width: 5),
           _buildTitleText(
               TagHelper.bicycle_ch, _userModel!.credit, _onJumpToUserBicycle),
@@ -169,10 +173,6 @@ class _ProfilePageState extends State<ProfilePage>
         )));
   }
 
-  _buildContentList() {
-    return [_buildProfileTab(), Divider(), ..._buildOptions()];
-  }
-
   _buildOptions() {
     return [
       ListTile(
@@ -180,11 +180,11 @@ class _ProfilePageState extends State<ProfilePage>
           title: Text(TagHelper.profile_edit_ch),
           subtitle: Text(TagHelper.profile_edit_subtitle_ch),
           onTap: _onJumpToProfileEdit),
-      ListTile(
+      _userModel!.isManager == 1 ? ListTile(
           leading: Icon(Icons.account_tree_outlined),
           title: Text(TagHelper.manager_function_ch),
           subtitle: Text(TagHelper.manager_function_subtitle_ch),
-          onTap: () {}),
+          onTap: () {}) : Container(),
       ListTile(
           leading: Icon(Icons.bug_report_outlined),
           title: Text(TagHelper.bug_report_ch),
@@ -199,7 +199,11 @@ class _ProfilePageState extends State<ProfilePage>
           leading: Icon(Icons.info_outlined),
           title: Text(TagHelper.about_ch),
           subtitle: Text(TagHelper.about_subtitle_ch),
-          onTap: () {})
+          onTap: () {}),
+      Container(
+          padding: EdgeInsets.all(10),
+          child:
+              LargeButton(TagHelper.logout_ch, onPressed: _showLogoutDialog)),
     ];
   }
 
@@ -235,7 +239,7 @@ class _ProfilePageState extends State<ProfilePage>
       // confirm logout
       HiCache.getInstance().remove(LoginDao.BOARDING_PASS);
       HiNavigator.getInstance().onJumpTo(RouteStatus.login, args: {});
-      ShowToast.showToast(MessageHelper.logout_succeed_ch);
+      LoadingMask.showInfo(MessageHelper.logout_succeed_ch);
     }
   }
 

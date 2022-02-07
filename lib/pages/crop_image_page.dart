@@ -105,9 +105,8 @@ class _CropImagePageState extends State<CropImagePage> {
     LoadingMask.showLoading(MessageHelper.loading_indication_ch);
     try {
       var result = await UploadDao.uploadAvatar("1", file.path);
-      print(result);
       LoadingMask.dismiss();
-      ShowToast.showToast(MessageHelper.upload_succeed_ch);
+      LoadingMask.showSuccess(MessageHelper.upload_succeed_ch);
       Navigator.of(context).pop();
     } on NoContent catch (e) {
       LoadingMask.dismiss();

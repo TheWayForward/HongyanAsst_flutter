@@ -47,11 +47,18 @@ class TagHelper {
   static const String nickname_new_ch = "新的昵称";
   static const String nickname_helper_text_ch = "4-20位字母、数字";
 
+  static const String live_address_ch = "现居地";
+  static const String address_pick_ch = "选择地址";
+
   static const String password_ch = "密码";
   static const String password_new_ch = "新的密码";
   static const String password_helper_text_ch = "8-20位字母、数字、下划线";
   static const String password_indicator_ch = "请输入密码";
   static const String password_retrieve_ch = "找回密码";
+
+  static const String user_detail_ch = "个性签名";
+  static const String user_detail_new_ch = "新的个性签名";
+  static const String user_detail_helper_text_ch = "短小精悍,句短而意长";
 
   static const String send_ch = "发送";
   static const String resend_ch = "重发";

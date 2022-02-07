@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hongyanasst/dao/phone_captcha_dao.dart';
+import 'package:hongyanasst/dao/captcha_dao.dart';
 import 'package:hongyanasst/http/core/hi_error.dart';
 import 'package:hongyanasst/utils/color_helper.dart';
 import 'package:hongyanasst/utils/message_helper.dart';
@@ -13,19 +13,23 @@ import 'package:hongyanasst/widgets/large_button.dart';
 import 'package:hongyanasst/widgets/loading_mask.dart';
 import 'package:hongyanasst/widgets/toast.dart';
 
+enum CaptchaType {phone, email}
+
 class DigitCaptcha extends StatefulWidget {
   final int countdown;
   final bool enabled;
+  final CaptchaType captchaType;
   final int maxLength;
-  final String tel;
+  final String inputContent;
   final ValueChanged<String> onChanged;
 
   const DigitCaptcha(
       {Key? key,
         required this.maxLength,
+        required this.captchaType,
       required this.countdown,
         required this.onChanged,
-        required this.tel,
+        required this.inputContent,
       this.enabled = false})
       : super(key: key);
 
@@ -88,25 +92,49 @@ class _DigitCaptchaState extends State<DigitCaptcha> {
   }
 
   _sendCaptcha() async {
-    if (!VerificationHelper.telVerification(widget.tel)) {
-      ShowToast.showToast(MessageHelper.tel_illegal_ch);
-      return;
-    }
-    LoadingMask.showLoading(MessageHelper.loading_indication_ch);
-    if (_canSend) {
-      try {
-        var result = await PhoneCaptchaDao.get(widget.tel);
-        print(result);
-        LoadingMask.dismiss();
-        ShowToast.showToast(MessageHelper.captcha_sent_ch);
-      } on NeedAuth catch (e) {
-        LoadingMask.dismiss();
-        LoadingMask.showInfo(MessageHelper.request_unauth_ch);
-      } on HiNetError catch (e) {
-        LoadingMask.dismiss();
-        LoadingMask.showError(MessageHelper.internal_error_ch);
+    if (widget.captchaType == CaptchaType.phone) {
+      if (!VerificationHelper.telVerification(widget.inputContent)) {
+        LoadingMask.showInfo(MessageHelper.tel_illegal_ch);
+        return;
+      }
+      LoadingMask.showLoading(MessageHelper.loading_indication_ch);
+      if (_canSend) {
+        try {
+          var result = await CaptchaDao.getPhoneCaptcha(widget.inputContent);
+          print(result);
+          LoadingMask.dismiss();
+          LoadingMask.showSuccess(MessageHelper.captcha_sent_ch);
+        } on NeedAuth catch (e) {
+          LoadingMask.dismiss();
+          LoadingMask.showInfo(MessageHelper.request_unauth_ch);
+        } on HiNetError catch (e) {
+          LoadingMask.dismiss();
+          LoadingMask.showError(MessageHelper.internal_error_ch);
+        }
+      }
+    } else {
+      print(widget.inputContent);
+      if (!VerificationHelper.emailVerification(widget.inputContent)) {
+        LoadingMask.showInfo(MessageHelper.email_illegal_ch);
+        return;
+      }
+      LoadingMask.showLoading(MessageHelper.loading_indication_ch);
+      if (_canSend) {
+        try {
+          var result = await CaptchaDao.getEmailCaptcha(widget.inputContent);
+          print(result);
+          LoadingMask.dismiss();
+          LoadingMask.showSuccess(MessageHelper.captcha_sent_ch);
+        } on NeedAuth catch (e) {
+          LoadingMask.dismiss();
+          LoadingMask.showInfo(MessageHelper.request_unauth_ch);
+        } on HiNetError catch (e) {
+          LoadingMask.dismiss();
+          LoadingMask.showError(MessageHelper.internal_error_ch);
+        }
       }
     }
+
     _canSend = false;
     _fontSize = 12;
     _timer = Timer.periodic(Duration(milliseconds: 1000), (timer) {
